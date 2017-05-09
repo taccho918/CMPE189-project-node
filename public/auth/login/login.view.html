@@ -1,0 +1,31 @@
+<navigation></navigation>
+<!--Login View Container-->
+<div class="main" style="margin-top: 60px">
+   <div style="width:400px; margin:auto; text-align:right;">
+      <h1 style="text-align:center; margin-bottom:20px;">Welcome back!<br/>Please Sign In</h1>
+      <!--Login Form-->
+      <form ng-submit="vm.onSubmit()">
+         <div class="form-group" style="text-align:left;">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" ng-model="vm.credentials.email">
+         </div>
+         <div class="form-group" style="text-align:left;">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" ng-model="vm.credentials.password">
+         </div>
+         <button type="submit" class="btn btn-primary" style="margin-right:10px;">Sign In</button>
+      </form>
+      <!--Alternatives-->
+      <div style="margin-top:10px;">
+         <!--Register Redirect-->
+         <div style="text-align:center; float:left; margin-left:40px;">
+            <p class="lead">
+            New to ERS
+               <br/>
+               <a ui-sref="register">Register here</a>
+            </p>
+         </div>
+         
+      </div>
+   </div>
+</div>
