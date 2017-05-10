@@ -5,8 +5,8 @@ exports.connect = function() {
   pool = mysql.createPool({
   //	connectionLimit : 100, //important for concurence connections
     host     : 'localhost',
-    user     : 'coolcode',
-    password : 'November23',
+    user     : 'root',
+    password : '',
     database : 'cmpe189'
   });
 }
