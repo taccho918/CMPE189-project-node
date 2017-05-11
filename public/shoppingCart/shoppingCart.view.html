@@ -28,10 +28,50 @@
   </div>
   <div class="col-md-3"></div>
   <div class="col-md-5">
-    <span style="margin-left: 20px;font-size: 2.0em; font-weight: bold;">Total:</span><span style="margin-left: 20px;color: #8F1D21; font-size: 2.0em; font-weight: bold;">${{total}}</span>
+    <span style="margin-left: 20px;font-size: 2.0em; font-weight: bold;">Total:</span><span style="margin-left: 20px; color: #8F1D21; font-size: 2.0em; font-weight: bold;">${{total}}</span>
   </div>
-  
-  <button ng-click="makePaypalPayment()" class="btn btn-info" style="margin-top: 40px">CheckOut for The Items</button> 
+  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+<div id="paypal-button-container"></div>
+<button ng-click="makePaypalPayment()" class="btn btn-info" style="margin-top: 40px; margin-bottom: 40px;">CheckOut for The Items</button> 
+
+</div>
+
+<script>
+    var foo="%= $scope.total";//passing off var
+    // Render the PayPal button
+    paypal.Button.render({
+        // Set your environment
+        env: 'sandbox', // sandbox | production
+        // PayPal Client IDs - replace with your own
+        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+        client: {
+            sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+            production: '<insert production client id>'
+        },
+        // Set to 'Pay Now'
+       commit: true,
+        // Wait for the PayPal button to be clicked
+        payment: function() {
+            // Make a client-side call to the REST api to create the payment
+            return paypal.rest.payment.create(this.props.env, this.props.client, {
+                transactions: [
+                    {
+                        amount: { total: "1200", currency: 'USD' }
+                    }
+                ]
+            });
+             },
+        // Wait for the payment to be authorized by the customer
+        onAuthorize: function(data, actions) {
+            // Execute the payment
+            return actions.payment.execute().then(function() {
+                document.querySelector('#paypal-button-container').innerText = 'Payment Complete!';
+            });
+        }
+    }, '#paypal-button-container');
+</script>
+
   
 
     <!--Items Container-->
@@ -50,3 +90,77 @@
     </div>
   </div> -->
 
+  <footer id="footer"><!--Footer-->
+    <div class="footer-widget">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-2">
+            <div class="single-widget">
+              <h2>Service</h2>
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="">Online Help</a></li>
+                <li><a href="">Contact Us</a></li>
+                <li><a href="">Order Status</a></li>
+                <li><a href="">Change Location</a></li>
+                <li><a href="">FAQ’s</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="single-widget">
+              <h2>Quock Shop</h2>
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="">Laptops</a></li>
+                <li><a href="">Tablets</a></li>
+                <li><a href="">TVs</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="single-widget">
+              <h2>Policies</h2>
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="">Terms of Use</a></li>
+                <li><a href="">Privecy Policy</a></li>
+                <li><a href="">Refund Policy</a></li>
+                <li><a href="">Billing System</a></li>
+                <li><a href="">Ticket System</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="single-widget">
+              <h2>About ERS</h2>
+              <ul class="nav nav-pills nav-stacked">
+                <li><a href="">Company Information</a></li>
+                <li><a href="">Careers</a></li>
+                <li><a href="">Affillate Program</a></li>
+                <li><a href="">Copyright</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-3 col-sm-offset-1">
+            <div class="single-widget">
+              <h2>About ERS</h2>
+              <form action="#" class="searchform">
+                <input type="text" placeholder="Your email address" />
+               <button type="submit" class="submit-btn btn btn-default"><span class="glyphicon glyphicon-envelope"></span></button>
+                <p>Get the most recent updates from <br />our site and be updated your self...</p>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row">
+          <p class="pull-left">Copyright © 2017 ERS. All rights reserved.</p>
+          <p class="pull-right">Designed by <span><a target="_blank">189Team2</a></span></p>
+        </div>
+      </div>
+    </div>
+
+  </footer><!--/Footer-->
