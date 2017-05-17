@@ -19,9 +19,23 @@
 		<h4 style="margin-top:35px;">New to ERS</h4>
 		<h4><a ui-sref="register" style="color:">Register Here</a></h4>
 	</div>
+
 	<!--Main Pic Background-->
-	<div style="height:100%; width:100%; min-width:300px; margin-right:300px; background-image:url('https://previews.123rf.com/images/jager/jager1110/jager111000464/10882747-the-beautiful-butterfly-with-wings-Stock-Photo-electronic-semiconductor-circuit.jpg'); background-attachment:fixed; background-repeat:no-repeat; background-size:cover;">
+	<!-- <div style="height:100%; width:100%; min-width:300px; margin-right:300px; background-image:url('https://previews.123rf.com/images/jager/jager1110/jager111000464/10882747-the-beautiful-butterfly-with-wings-Stock-Photo-electronic-semiconductor-circuit.jpg'); background-attachment:fixed; background-repeat:no-repeat; background-size:cover;"> -->
 		<!--Welcome Text-->
+		
+	<div id="header">
+		<div id="container">
+    		<div id="theTarget">
+        		<div style="background-image: url(http://placehold.it/800x150)"></div>
+        		<div style="background-image: url(http://placehold.it/800x150)"></div>
+        		<div style="background-image: url(http://placehold.it/800x150)"></div>
+        		<div style="background-image: url(http://placehold.it/800x150)"></div>
+        		<div style="background-image: url(http://placehold.it/800x150)"></div>
+    		</div>    
+		</div>
+	</div>
+
 		<h1 id="welcome_text" style="color:white; position:absolute; top:35%; bottom:65%; width:100%; padding-right:300px; text-align:center;">
 			<span style="font-size:1.4em; color: black">Electronic Retail Store</span>
 			<br/>
@@ -29,6 +43,10 @@
 		</h1>
 	</div>
 </div>
+
+
+
+
 	<footer id="footer"><!--Footer-->
 		<div class="footer-widget">
 			<div class="container">
@@ -103,3 +121,22 @@
 		</div>
 
 	</footer><!--/Footer-->
+
+	<script>
+		//setting for skippr
+		$(document).ready(function(){
+			$("#theTarget").skippr();
+		});
+		 $("#theTarget").skippr({
+            transition: 'slide',
+            speed: 1000,
+            easing: 'easeOutQuart',
+            navType: 'block',
+            childrenElementType: 'div',
+            arrows: true,
+            autoPlay: false,
+            autoPlayDuration: 5000,
+            keyboardOnAlways: true,
+            hidePrevious: false
+        });
+	</script>

@@ -49,9 +49,10 @@
       </div>
    </div>
 
-   <div class="row" style="margin-left: 20px" ng-repeat="item in transactionHistory | orderBy: 'transactionDate' ">
+   <div class="row" style="margin-left: 20px;" ng-repeat="item in transactionHistory | orderBy: 'transactionDate' ">
       <h4> On {{item.transactionDate | date: "short"}} || Pay {{item.amount}} for: <span ng-repeat="fact in transactionFactDetail " ng-if="fact.transactionId == item.transactionId">  {{fact.name}}, </span> || delivery on date ????</h4>
    </div>
+   <div style="margin-bottom: 30px;"></div>
    <!--Edit Profile Display Container-->
    <div class="modal fade" id="editProfile" tabindex="-1" role="dialog" >
       <div class="modal-dialog" role="document">
@@ -99,26 +100,6 @@
 </div>
 
    <footer id="footer"><!--Footer-->
-      <div class="footer-top">
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-2">
-                  <div class="companyinfo">
-                     <h2><span>ERS</span></h2>
-                     <p>Electronic Retail Store</p>
-                  </div>
-               </div>
-
-               <div class="col-sm-3">
-                  <div class="address">
-                     <!-- <img src="images/home/map.png" alt="" /> -->
-                     <p>SJSU, San Jose, CA(California)</p>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-
       <div class="footer-widget">
          <div class="container">
             <div class="row">
